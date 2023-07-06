@@ -20,13 +20,38 @@ function removeValue() {
     if(input.value.length > 0) input.value = input.value.slice(0, -1)
 }
 
+function copyResult(){
+    let input = document.getElementById('result');
+    input.select();
+    input.setSelectionRange(0, 99999); 
+    document.execCommand('copy');
+    input.setAttribute('readonly', true);
+    const copyButton = document.getElementById('copy');
+    copyButton.innerHTML = `<i class='bx bxs-copy'></i>`;
+    setTimeout(function() {
+        copyButton.innerHTML = `<i class='bx bx-copy'></i>`;
+        input.removeAttribute('readonly');
+    }, 800);
+}
+
+function changeTheme() {
+    const body = document.querySelector('body');
+    const calculator = document.querySelector('.calculator');
+    body.classList.toggle('dark-mode');
+    calculator.classList.toggle('dark-mode');
+}
+
 window.onload = function() {
     document.addEventListener("keydown", function (event){
-        if (event.key >= 0 && event.key <= 9) { appendValue(event.key); }
-        else if(event.key == "Escape"){clearValue();}
-        else if(event.key == "Enter"){calculate();}
-        else if(event.key == "." || event.key == "+" || event.key == "-" || event.key == "/" || event.key == "*"){appendValue(event.key);}
-        else if (event.key == "Backspace"){removeValue()}
+        const operators = ['+', '-', '*', '/'];
+        const pressed = event.key;
+        
+        if (operators.includes(pressed) || pressed >= 0 && pressed <= 9) { appendValue(pressed); }
+        else if(pressed == "Escape"){clearValue();}
+        else if(pressed == "Enter"){calculate();}
+        else if(pressed==="÷"){appendValue('/');}
+        else if(pressed==="×"){appendValue('*');}
+        else if (pressed == "Backspace"){removeValue()}
         event.preventDefault(); 
     })
 }
