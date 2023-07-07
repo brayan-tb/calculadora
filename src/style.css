@@ -12,6 +12,7 @@ body {
     height: auto;
     margin: 0;
     transition: all 0.5s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .calculator {
@@ -63,8 +64,10 @@ body {
 }
 
 .grid button:hover {
-    background: #f4f4f4;
-    transform: scale(1.09);
+    /* background: #f4f4f4; */
+    background-color: #313131;
+    color: #fff;
+    transform: scale(1.06);
 }
 
 .operator {
@@ -72,6 +75,7 @@ body {
 }
 
 /* dark mode */
+
 body.dark-mode {
     color: #fff;
     background-color: #141414;
@@ -90,6 +94,11 @@ body.dark-mode {
 .calculator.dark-mode .grid button{
     background-color: #1f1f1f;
     color: #fff;
+}
+
+.calculator.dark-mode .grid button:hover {
+    background: #f4f4f4;
+    color: #000;
 }
 
 @media (min-width: 800px) and (min-height: 650px) {
