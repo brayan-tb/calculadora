@@ -51,10 +51,10 @@ window.onload = function () {
         const pressed = event.key;
 
         if (operators.includes(pressed) || pressed >= 0 && pressed <= 9) { appendValue(pressed); }
-        else if (pressed == "Escape") { clearValue(); }
-        else if (pressed == "Enter") { calculate(); }
+        else if (pressed === "Escape") { clearValue(); }
+        else if (pressed === "Enter") { calculate(); }
         else if (pressed === ",") { appendValue('.'); }
-        else if (pressed == "Backspace") { removeValue() }
+        else if (pressed === "Backspace") { removeValue() }
         event.preventDefault();
     })
 }
